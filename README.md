@@ -1,6 +1,6 @@
 # Requirements:
-- python3.6.3, node 8.9.1
-- install the dependencies using the requirements file:
+- python 3.6.3, node 8.9.1
+- install python dependencies using the requirements file.
 - `@angular/cli` `npm` package is also required. It has to be installed globally.
 
 # Desc:
@@ -11,8 +11,8 @@
 
 1. Generates a `fake_cases.json` file: `python fake_data.py`.
 2. Change directory to `api` folder.
-3. Import above json into django: `python manage.py loaddata fake_cases.json`.
-4. Migrate: `python manage.py migrate`.
+3. Migrate: `python manage.py migrate`.
+4. Import above json into django: `python manage.py loaddata fake_cases.json`.
 5. Start the api server: `python manage.py runserver`.
 6. After installing the dependencies of the angular app, run the app using `ng serve`.
 
