@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { PlotService } from './plot.service';
-import * as d3 from 'd3';
+import { renderGraph } from './render-graph';
 
 @Component({
   selector: 'mkl-plot',
@@ -19,7 +19,8 @@ export class PlotComponent implements OnInit {
       this.cases = cases;
       console.log(cases);
       // this.findYearLimits(cases);
-      this.renderGraph(cases);
+      // this.renderGraph(cases);
+      renderGraph(cases);
     })
   }
 
@@ -33,30 +34,6 @@ export class PlotComponent implements OnInit {
 
     console.log(min, max);
     return [min, max];
-  }
-
-  renderGraph(cases) {
-    const caseCircles = d3.select('#graph')
-      .selectAll('g')
-      .data(cases)
-      .enter()
-      .append('g')
-      .attr('class', 'case')
-      // .append('circle')
-      // .attr('')
-      .attr('transform', c => {
-        const date = c['judgement_date'].split('-');
-        const year = 10 * (+date[0].slice(-2));
-        const month = 10 * (+date[1]);
-        return `translate(${year}, ${month})`;
-      })
-
-    caseCircles.append('circle')
-      .attr('r', c => c['mentiones'].length)
-      .attr('fill', 'grey')
-
-
-    // .text(c => `${c['judgement_date']}, World!`);
   }
 
 }
